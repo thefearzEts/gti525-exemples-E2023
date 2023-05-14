@@ -10,21 +10,21 @@ Fonctionnement:
 - Puisqu'aucun constructeur n'est invoqué lors de la création d'objets avec Object.create, nous implémentons une fonction init dans chacun des objets, qui permet d'initialiser les paramètres. L'utilisateur doit donc manuellement invoquer init après avoir créé l'objet. Vous pouvez imaginer comme analogie l'initialisation d'une "structure" en C++ vs une classe.
 */
 
-var Point = {
+let Point = {
     init: function(x, y) {
-	this.x = x;
-	this.y = y;
+		this.x = x;
+		this.y = y;
     },
     area : function() {
-	return 0;
+		return 0;
     },
     toString: function() {
-	return "(" + this.x + "," + this.y + ")";
+		return "(" + this.x + "," + this.y + ")";
     }
 }; 
 
 
-var Circle = Object.create(Point);
+let Circle = Object.create(Point);
 Circle.init = function(x, y, r) {
 	Point.init.call(this, x, y);
 	this.r = r;
@@ -36,7 +36,7 @@ Circle.toString =  function() {
 	return "(" + this.x + "," + this.y + ", " + this.r + ")";
 };
 
-var Ellipse = Object.create(Circle);
+let Ellipse = Object.create(Circle);
 Ellipse.init = function(x, y, r, r2) {
 	Circle.init.call(this, x, y, r);
 	this.r2 = r2;
@@ -48,26 +48,26 @@ Ellipse.toString = function() {
 	return "(" + this.x + "," + this.y + ", " + this.r + " , " + this.r2 + ")";
 };
 
-var p = Object.create(Point);
+let p = Object.create(Point);
 p.init(10, 20);
 document.writeln( "Point p = " + p );
-document.writeln( "p's area = " + p.area() );
+document.writeln( "Aire de p = " + p.area() );
 console.log( Object.getPrototypeOf(p) );
 
-var c = Object.create(Circle);
+let c = Object.create(Circle);
 c.init(20, 30, 5);
 document.writeln( "Circle c = " + c );
-document.writeln( "c's area = " + c.area() );
+document.writeln( "Aire de c = " + c.area() );
 console.log( Object.getPrototypeOf(c) );
 
-var e = Object.create(Ellipse);
+let e = Object.create(Ellipse);
 e.init(5, 10, 5, 2);
 document.writeln( "Ellipse e = " + e );
-document.writeln( "e's area = " + e.area() );
+document.writeln( "Aire de e = " + e.area() );
 console.log( Object.getPrototypeOf(e) ); 
 console.log( Object.getPrototypeOf( Object.getPrototypeOf(e) ) );
 
-var e2 = Object.create(Ellipse);
+let e2 = Object.create(Ellipse);
 e2.init(0, 0, 0, 0); 
 document.writeln( "Ellipse e = " + e );
 document.writeln( "Ellipse e2 = " + e2 );
@@ -89,6 +89,6 @@ function iterateOverProperties(obj) {
 	return str;
 }
 
-console.log( "p's properties " + iterateOverProperties(p) );
-console.log( "c's properties " + iterateOverProperties(c) );
-console.log( "e's properties " + iterateOverProperties(e) );
+console.log( "Propriétés de p provenant du prototype et surchargées dans l'objet lui-même " + iterateOverProperties(p) );
+console.log( "Propriétés de p provenant du prototype et surchargées dans l'objet lui-même " + iterateOverProperties(c) );
+console.log( "Propriétés de p provenant du prototype et surchargées dans l'objet lui-même " + iterateOverProperties(e) );

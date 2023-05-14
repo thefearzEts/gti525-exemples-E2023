@@ -3,7 +3,7 @@ Exemple de code démontrant l'héritage prototypal au moyen des fonctions constr
 
 Se référer aux notions théoriques décrites dans les acétates du cours.
 */
-var Person = function(firstName, lastName, pronoun) {
+const Person = function(firstName, lastName, pronoun) {
 	this.firstName = firstName;	
 	this.lastName = lastName;
 	this.pronoun = pronoun;
@@ -12,7 +12,7 @@ var Person = function(firstName, lastName, pronoun) {
 	}
 }
 
-var p1 = new Person("John", "Smith", "He");
+let p1 = new Person("John", "Smith", "He");
 console.log( p1.firstName );
 console.log( p1["lastName"] );
 console.log( p1.name() );
@@ -23,20 +23,20 @@ Person.prototype.print = function() { // ajout d'une méthode via le prototype
 
 console.log(p1);
 console.log(Person.prototype);
-var proto1 = Object.getPrototypeOf(p1);
+let proto1 = Object.getPrototypeOf(p1);
 console.log(proto1);
 console.log(Object.getPrototypeOf(proto1));
 console.log(Object.getPrototypeOf(Person));
 
-var p2 = new Person("Linda", "James", "She");
+let p2 = new Person("Linda", "James", "She");
 console.log(p2);
-var proto2 = Object.getPrototypeOf(p2);
+let proto2 = Object.getPrototypeOf(p2);
 console.log(proto2);
 
 p1.print();
 p2.print();
 
-var Employee = function(firstName, lastName, pronoun, title) {
+const Employee = function(firstName, lastName, pronoun, title) {
 	Person.call(this, firstName, lastName, pronoun);
 	this.title = title;	
 };
@@ -48,7 +48,7 @@ Employee.prototype.print = function() {
 	console.log( this.name() + " " + this.pronoun + " " + this.title );
 }
 
-var e1 = new Employee("XYZ", "ABC", "He", "Manager");
+let e1 = new Employee("XYZ", "ABC", "He", "Manager");
 console.log( Employee.prototype );
 console.log( Object.getPrototypeOf(e1) );
 

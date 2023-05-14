@@ -1,12 +1,12 @@
 // Exemple de code démontrant la création d'objets au moyen de l'héritage prototypal
 
-var Person = {
+let Person = {
     print: function() {
 	console.log("Person " + this.firstName + " " + this.lastName + " " + this.pronoun );
     }
 };
 
-var p = Object.create(Person);
+let p = Object.create(Person);
 p.firstName = "Linda";
 p.lastName = "James";
 p.pronoun = "She";
@@ -16,7 +16,7 @@ console.log(p);
 console.log( Object.getPrototypeOf(p) );
 console.log( p.prototype );	
 
-var e = Object.create(Person, {
+let e = Object.create(Person, {
     firstName: {value: "John"},
     lastName: {value: "Smith"},
     pronoun: {value: "He"}
