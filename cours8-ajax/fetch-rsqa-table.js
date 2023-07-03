@@ -1,3 +1,9 @@
+// Fonction adaptée de: https://www.tjvantoll.com/2015/09/13/fetch-and-errors/
+handleErrors = (response) => {
+    if (!response.ok) throw Error(response.status + ": " + response.statusText);
+    return response;
+}
+
 fetch("https://donnees.montreal.ca/api/3/action/datastore_search?resource_id=9c7434e9-f5af-4154-991c-293fbd5cb626")
     .then(handleErrors)
     .then((response) => {
