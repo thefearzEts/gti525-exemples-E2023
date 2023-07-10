@@ -1,4 +1,4 @@
-var fs = require("fs");
+import fs from 'fs'
 var length = 0;
 var fileName = "sample.txt";
 fs.readFile(fileName, function(err, buf) {
