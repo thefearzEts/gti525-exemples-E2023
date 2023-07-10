@@ -1,8 +1,7 @@
 // Exemple d'un serveur HTTP simple écrit avec Node.JS (flux)
 // Source: node.js succinctly
 
-var http = require('http');
-if (! http) throw { msg: "Module HTTP introuvable" };
+import http from 'http'
 
 // Fonction simple pour servir une requête
 var serveRequest = function(request, response) {
