@@ -1,5 +1,4 @@
-var fs = require("fs");
-if (! fs) process.exit(1);
+import fs from 'fs'
 
 var fileName1 = "sample.txt";
 var fileName2 = "sample-copy.txt";

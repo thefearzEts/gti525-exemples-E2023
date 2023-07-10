@@ -1,6 +1,5 @@
 // Copie un fichier en utilisant les tuyaux (pipes)
-var fs = require("fs");
-if (! fs) process.exit(1);
+import fs from 'fs'
 
 // Ouvre les flux de lecture et d'écriture
 var readStream = fs.createReadStream("sample.txt");
