@@ -1,7 +1,6 @@
 // Compte le nombre total de caractères dans un fichier texte donné
 
-var fs = require('fs');
-if (! fs) process.exit(1);
+import fs from 'fs'
 
 var length = 0;
 var fileName = "sample.txt";
