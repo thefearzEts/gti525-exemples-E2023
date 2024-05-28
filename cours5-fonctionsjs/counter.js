@@ -176,7 +176,7 @@ Timer.prototype.stop = function() {
 	clearInterval(this.interval)
 }
 Timer.prototype.reset = function() {
-	this.interval = initial
+	this.val = this.initial
 }
 
 var t = new Timer(10)
@@ -203,7 +203,7 @@ Timer.prototype.stop = function() {
 	clearInterval(this.interval)
 }
 Timer.prototype.reset = function() {
-	this.interval = initial
+	this.val = this.initial
 }
 
 let t = new Timer(10)

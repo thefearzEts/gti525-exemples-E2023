@@ -31,12 +31,12 @@ function StringStack() {
     var values = [];
     
     return {
-	push: function(val) {
-	    if (typeof val == "string")
-		values.push(val);
-	},
-	pop: function() {
-	    return values.pop();
-	}
+		push: function(val) {
+			if (typeof val == "string")
+			values.push(val);
+		},
+		pop: function() {
+			return values.pop();
+		}
     }
 }
