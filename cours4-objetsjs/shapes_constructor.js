@@ -11,17 +11,14 @@ const Point = function (x, y) {
 		return 0;
     }
 	*/
-	this.PI = 3.1416;
 };
 
 Point.prototype.area = function() {
 	return 0;
 }
 
-Point.prototype.PI = 3.1416;
-
 Point.prototype.toString = function() {
-    return "(" + this.x + "," + this.y + ")";
+    return this.x + "," + this.y;
 };
 
 console.log(Point);
@@ -46,7 +43,11 @@ Circle.prototype.area = function() {
 }
 
 Circle.prototype.toString = function() {
-	return "(" + this.x + "," + this.y + ", " + this.r + ")";
+	//return this.x + "," + this.y + "," + this.r;
+	// Invocation de la méthode parente
+	return Point.prototype.toString.call(this) + "," + this.r
+	// Ou:
+	//return this.__proto__.__proto__.toString.call(this) + "," + this.r
 }
 
 const Ellipse = function(x, y, r1, r2) { 
@@ -64,11 +65,15 @@ Ellipse.prototype = Object.create(Circle.prototype);
 Ellipse.prototype.constructor = Ellipse;
 
 Ellipse.prototype.area = function() {
-	return 3.1412 * this.r * this.r2;
+	return Math.PI * this.r * this.r2;
 }
 
 Ellipse.prototype.toString = function() {
-	return "(" + this.x + "," + this.y + ", " + this.r + "," + this.r2 + ")";
+	//return this.x + "," + this.y + ", " + this.r + "," + this.r2;
+	// Invocation de la méthode parente
+	return Circle.prototype.toString.call(this) + "," + this.r2
+	// Ou:
+	//return this.__proto__.__proto__.toString.call(this) + "," + this.r
 } 
 
 function iterateOverProperties(obj) {
