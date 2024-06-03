@@ -2,22 +2,22 @@
 // Utilisation de fermetures imbriquées pour préserver l'état
 
 var invokeTimes = function(func, noTimes, time) {
-    console.log("Invocation: " + noTimes + " " + time);
-    
-    for (var i = 0; i < noTimes; ++i) {
-	var timeoutHandler = function(count) {
-	    // timeOutHandler is a closure
-	    return function() {
+	console.log("Invocation: " + noTimes + " " + time);
+	var count = 0;
+	var timeoutHandler = function() {
+		// timeOutHandler est une fermeture
 		console.log( "invocation " + count);
 		func(count);
-	    }
-	}
-	setTimeout(timeoutHandler(i), time * i);
-    }
+		count = count + 1;
+		if (count < noTimes) {
+			setTimeout(timeoutHandler, time);
+		}
+	};
+	if (count==0) setTimeout(timeoutHandler, time);
 };
 
 var setup = function() {
-    invokeTimes( function(i) { alert("hello " + i); }, 5, 1000 );
+	invokeTimes( function(i) { alert("hello " + i); }, 10, 1000 );
 }
 
 setup();
