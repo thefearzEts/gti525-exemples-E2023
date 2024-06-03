@@ -1,19 +1,18 @@
-// Solution à l'activité en classe en utilisant setInterval
+// Solution en utilisant setTimeout
 
 var invokeTimes = function(func, noTimes, time) {
 	console.log("Invocation: " + noTimes + " " + time);
 	var count = 0;
-	var interval;
-	var intervalHandler = function() {
+	var timeoutHandler = function() {
+		// timeOutHandler est une fermeture
 		console.log( "invocation " + count);
 		func(count);
 		count = count + 1;
-		if (count == noTimes) {
-			clearInterval(interval);
+		if (count < noTimes) {
+			setTimeout(timeoutHandler, time);
 		}
 	};
-	if (noTimes >0)
-		interval = setInterval(intervalHandler, time);
+	if (count==0) setTimeout(timeoutHandler, time);
 };
 
 var setup = function() {
