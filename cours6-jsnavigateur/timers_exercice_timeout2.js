@@ -3,19 +3,18 @@
 
 // Besoin de fermetures imbriquées pour préserver l'état
 
+// "Préprogrammer" les invocations de setTimeout
+
 var invokeTimes = function(func, noTimes, time) {
 	console.log("Invocation: " + noTimes + " " + time);
 
 	var timeoutHandler = function(count) {
-		// timeOutHandler est une fermeture!
-		return function() {
-			console.log( "invocation " + count);
-			func(count);
-		}
+		console.log( "invocation " + count);
+		func(count);
 	}
 
 	for (var i = 0; i < noTimes; ++i) {
-		setTimeout(timeoutHandler(i), time * i);
+		setTimeout(timeoutHandler, time * i, i);
 	}
 };
 
